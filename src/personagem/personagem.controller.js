@@ -28,8 +28,17 @@ async function create(req, res) {
   res.status(201).send(newItem)
 }
 
-function updateById(req, res) {
-  res.send('Update By ID')
+async function updateById(req, res) {
+  const id = req.params.id
+
+  const newItem = req.body
+
+  if (!newItem || !newItem.nome) {
+    return res.status(400).send('Corpo da requisição deve conter a propriedade `nome`.')
+  }
+
+  await service.updateById(id, newItem)
+  res.send(newItem)
 }
 
 function deleteById(req, res) {

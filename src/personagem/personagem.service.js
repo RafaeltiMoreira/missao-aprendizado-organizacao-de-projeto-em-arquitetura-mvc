@@ -22,8 +22,16 @@ function create(newItem) {
   return getCollection().insertOne(newItem)
 }
 
-function updateById() {
-
+/**
+ * 
+ * @param {string} id 
+ * @returns 
+ */
+function updateById(id, newItem) {
+  return getCollection().updateOne(
+    { _id: new ObjectId(id) },
+    { $set: newItem }
+  )
 }
 
 function deleteById() {
