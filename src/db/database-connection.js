@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
-
 const admSecret = process.env.SECRET_ADM
 const keySecret = process.env.SECRET_KEY
 
