@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const { getDatabase } = require("../db/database-connection")
 
 function getCollection() {
@@ -8,8 +9,13 @@ function readAll() {
   return getCollection().find().toArray()
 }
 
-function readById() {
-
+/**
+ * 
+ * @param {string} id 
+ * @returns 
+ */
+function readById(id) {
+  return getCollection().findOne({ _id: new ObjectId(id) })
 }
 
 function create() {
