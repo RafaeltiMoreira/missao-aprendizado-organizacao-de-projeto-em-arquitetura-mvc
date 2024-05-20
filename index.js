@@ -8,7 +8,7 @@ const admSecret = process.env.SECRET_ADM
 const keySecret = process.env.SECRET_KEY
 
 const dbUrl = `mongodb+srv://${admSecret}:${keySecret}@cluster0.3rntpik.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
-const dbName = 'mongodb-intro-e-implementacao'
+const dbName = 'mongodb-arquitetura-mvc'
 
 async function main() {
     const client = new MongoClient(dbUrl)
