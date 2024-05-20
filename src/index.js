@@ -1,32 +1,19 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
-import express from 'express';
-import { MongoClient, ObjectId } from 'mongodb';
-
-const admSecret = process.env.SECRET_ADM
-const keySecret = process.env.SECRET_KEY
-
-const dbUrl = `mongodb+srv://${admSecret}:${keySecret}@cluster0.3rntpik.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
-const dbName = 'mongodb-arquitetura-mvc'
+const express = require('express');
+const { connectToDatabase } = require('./db/database-connection');
+//import { MongoClient, ObjectId } from 'mongodb';
 
 async function main() {
-    const client = new MongoClient(dbUrl)
-    console.log('Conectando ao banco de dados...')
-    await client.connect()
-    console.log('Banco de dados conectado com sucesso!')
-
-    const db = client.db(dbName)
-    const collection = db.collection('personagem')
+    await connectToDatabase()
+    // const collection = db.collection('personagem')
 
     const app = express()
+    app.use(express.json())
 
     app.get('/', function (req, res) {
         res.send('Hello World!')
     })
 
-    const lista = ['Java', 'Kotlin', 'Android']
-
+    /*
     app.get('/personagem', async function (req, res) {
         const itens = await collection.find().toArray()
         res.send(itens)
@@ -42,8 +29,6 @@ async function main() {
 
         res.send(item)
     })
-
-    app.use(express.json())
 
     app.post('/personagem', async function (req, res) {
         const novoItem = req.body
@@ -95,8 +80,11 @@ async function main() {
         await collection.deleteOne({ _id: new ObjectId(id) })
         res.send('Item removido com sucesso: ' + id)
     })
+    */
 
-    app.listen(3000)
+    app.listen(3000, function () {
+        console.log('Servidor rodando em http://localhost:3000')
+    })
 }
 
 main();
