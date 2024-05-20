@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const { connectToDatabase } = require('./db/database-connection');
+
 const personagemRouter = require('./personagem/personagem.router');
 
 async function main() {
