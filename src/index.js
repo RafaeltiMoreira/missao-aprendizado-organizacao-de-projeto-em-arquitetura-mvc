@@ -16,37 +16,7 @@ async function main() {
 
     app.use('/personagem', personagemRouter)
 
-    /*
-    app.get('/personagem', async function (req, res) {
-        const itens = await collection.find().toArray()
-        res.send(itens)
-    })
-
-    app.get('/personagem/:id', async function (req, res) {
-        const id = req.params.id
-        const item = await collection.findOne({ _id: new ObjectId(id) })
-
-        if (!item) {
-            return res.status(404).send('Item não encontrado.')
-        }
-
-        res.send(item)
-    })
-
-    app.post('/personagem', async function (req, res) {
-        const novoItem = req.body
-
-        if (!novoItem || !novoItem.nome) {
-            return res.status(400).send('Corpo da requisição deve conter a propriedade `nome`.')
-        }
-
-        // if (lista.includes(novoItem)) {
-        //     return res.status(409).send('Esse item `' + novoItem + '` já existe na lista.')
-        // }
-
-        await collection.insertOne(novoItem)
-        res.send(novoItem)
-    })
+    /*    
 
     app.put('/personagem/:id', async function (req, res) {
         const id = req.params.id
