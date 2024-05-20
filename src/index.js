@@ -1,5 +1,6 @@
 const express = require('express');
 const { connectToDatabase } = require('./db/database-connection');
+const personagemRouter = require('./personagem/personagem.router');
 //import { MongoClient, ObjectId } from 'mongodb';
 
 async function main() {
@@ -12,6 +13,8 @@ async function main() {
     app.get('/', function (req, res) {
         res.send('Hello World!')
     })
+
+    app.use('/personagem', personagemRouter)
 
     /*
     app.get('/personagem', async function (req, res) {
